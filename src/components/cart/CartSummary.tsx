@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { AddToCartButton, BasicSecondaryButton } from "../smallComponents/Buttons";
 
 const CartSummary = () => {
@@ -7,12 +8,10 @@ const CartSummary = () => {
                 <h4 className="font-medium">Subtotal</h4>
                 <h4>50$</h4>
             </div>
-            <div className="text-center my-6">
-                <input type="checkbox"/>
-                <span className="ml-2">I agree with the terms and conditions</span>
-            </div>
             <div className="my-6">
-                <AddToCartButton text="Check out"/>
+                <Link href="/shipping" passHref>
+                    <AddToCartButton text="Check out"/>
+                </Link>
                 <div className="my-4">
                     <BasicSecondaryButton text="Continue shopping"/>
                 </div>

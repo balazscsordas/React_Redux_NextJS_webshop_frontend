@@ -12,7 +12,9 @@ const Layout = ({ children }: Props) => {
         <>
             <TopInformationBar/>
             <Header/>
-            { children }
+            <section className="mb-8">
+                { children }
+            </section>
             <Footer/>
         </>
     )
