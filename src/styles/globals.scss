@@ -47,33 +47,41 @@ body {
   }
 
 @media screen and (max-width: 640px) {
-  .page-title {
-    margin-top: 20px;
-    margin-bottom: 20px;
+    .page-title {
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 1.5rem;
+    }
+    
+    h2 {
+      font-size: 1.4rem;
+    }
+    
+    h3 {
+      font-size: 1.2rem;
+    }
+    
+    h4 {
+      font-size: 1.1rem;
+    }
+    
+    h5 {
+      font-size: 1rem;
+    }
+    
+    p {
+      font-size: 0.9rem;
+    }
   }
 
-  h1 {
-    font-size: 1.5rem;
+  .radioInputWithLabelOnly input[type="radio"]:checked + label {
+    border: solid 2px green;
   }
-  
-  h2 {
-    font-size: 1.4rem;
+
+  .radioInputWithLabelOnly input[type="radio"] {
+    display: none;
   }
-  
-  h3 {
-    font-size: 1.2rem;
-  }
-  
-  h4 {
-    font-size: 1.1rem;
-  }
-  
-  h5 {
-    font-size: 1rem;
-  }
-  
-  p {
-    font-size: 0.9rem;
-  }
-}
 }

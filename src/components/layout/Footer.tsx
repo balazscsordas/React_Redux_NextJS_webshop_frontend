@@ -1,6 +1,8 @@
 const Footer = () => {
     return (
-        <p>asd</p>
+        <section className="mt-auto">
+            <p>asd</p>
+        </section>
     )
 }
 

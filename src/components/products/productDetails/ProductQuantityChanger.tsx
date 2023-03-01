@@ -1,15 +1,15 @@
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import IconButton from "@mui/material/IconButton";
 
 interface Props {
     currentStock: number,
+    quantity: number,
+    setQuantity: Dispatch<SetStateAction<number>>,
 }
 
-const ProductQuantityChanger = ({ currentStock }: Props) => {
-
-    const [quantity, setQuantity] = useState(1);
+const ProductQuantityChanger = ({ currentStock, quantity, setQuantity }: Props) => {
 
     const increaseQuantity = () => {
         if (quantity < currentStock) setQuantity(currQuantity => currQuantity + 1)

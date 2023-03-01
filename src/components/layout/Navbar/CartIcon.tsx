@@ -1,12 +1,16 @@
 import Badge from "@mui/material/Badge";
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import Link from "next/link";
-
+import { useAppSelector } from "@/app_redux/hooks";
+import { getNumberOfItemsInCart } from "@/utils/cart";
 
 const CartIcon = () => {
+
+    const cartProducts = useAppSelector(state => state.cartProducts);
+
     return (
         <Link href="/cart" passHref>
-            <Badge badgeContent={1} color="primary">
+            <Badge badgeContent={ getNumberOfItemsInCart(cartProducts.value) } color="primary">
                 <ShoppingCartIcon color="action" />
             </Badge>
         </Link>

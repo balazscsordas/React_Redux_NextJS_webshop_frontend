@@ -1,8 +1,25 @@
 import PaymentBlock from "@/components/checkout/payment/PaymentBlock";
 import CheckoutLayout from "@/components/layout/CheckoutLayout";
 import Head from "next/head";
+import CreditCardImage from "../../public/creditcard.png";
+import CashOnDeliveryImage from "../../public/cashondelivery.png";
+import { PaymentOptionInterface } from "@/interfaces/PaymentInterface";
+
+const paymentOptions: PaymentOptionInterface[] = [
+    {
+        id: 2,
+        name: "Credit Card",
+        image: CreditCardImage
+    },
+    {
+        id: 3,
+        name: "Cash On Delivery",
+        image: CashOnDeliveryImage
+    },
+]
 
 const ShippingPage = () => {
+
     return (
         <>
             <Head>
@@ -12,7 +29,7 @@ const ShippingPage = () => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <CheckoutLayout>
-                <PaymentBlock />
+                <PaymentBlock paymentOptions={paymentOptions}/>
             </CheckoutLayout>
         </>
     )

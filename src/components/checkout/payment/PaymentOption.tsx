@@ -1,27 +1,29 @@
-import Image, { StaticImageData } from "next/image";
+import { useAppDispatch } from "@/app_redux/hooks";
+import { setChoosenPayment } from "@/features/paymentDetailsSlice";
+import { PaymentOptionInterface } from "@/interfaces/PaymentInterface";
+import Image from "next/image";
 import { useState } from "react";
 
-interface Props {
-    name: string,
-    src: StaticImageData,
-}
+const PaymentOption = ({ id, name, image }: PaymentOptionInterface) => {
 
-const PaymentOption = ({ name, src }: Props) => {
+    const dispatch = useAppDispatch();
 
-    const [checked, setChecked] = useState(false);
-
-    const handleChange = () => {
-        setChecked(currState => !currState);
+    const handleClick = () => {
+        dispatch(setChoosenPayment({
+            id,
+            name,
+            image
+        }));
     }
 
     return (
-        <section className="w-80 h-40 flex items-center justify-center border m-4 p-2 shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] flex-col rounded-2xl" onClick={handleChange}>
-            <Image alt="payment" src={ src } width={100}/>
-            <div className="flex flex-row items-center mt-4">
-                <span className="mr-2">{ name }</span>
-                <input type="checkbox" checked={checked} onChange={handleChange} className="w-4 h-4"/>
-            </div>
-        </section>
+        <div className="radioInputWithLabelOnly m-4 p-2" onClick={handleClick}>
+            <input type="radio" id={ name } name="paymentOption" value={ name }/>
+            <label className="w-80 h-40 flex flex-col items-center transition-all border border-gray-300 px-4 py-2 min-w-[3.2rem] justify-center m-1 font-medium shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] rounded-2xl" htmlFor={ name }>
+                <Image alt="payment" src={image} width={100}/>
+                { name }
+            </label>
+        </div>
     )
 }
 

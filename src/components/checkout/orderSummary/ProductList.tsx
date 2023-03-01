@@ -1,11 +1,24 @@
+import { useAppSelector } from "@/app_redux/hooks";
 import CheckoutCartItem from "./CheckoutCartItem";
 
 const ProductList = () => {
+
+    const cartProducts = useAppSelector(state => state.cartProducts);
+
     return (
         <section className="flex flex-col">
-            <CheckoutCartItem name="Organic Baked Bites - Chicken" currentQuantity={2} currentStock={8} unitPrice={20}/>
-            <CheckoutCartItem name="Organic Baked Bites - Chicken" currentQuantity={2} currentStock={8} unitPrice={20}/>
-            <CheckoutCartItem name="Organic Baked Bites - Chicken" currentQuantity={2} currentStock={8} unitPrice={20}/>
+            {cartProducts.value.map((product, index) => (
+                <CheckoutCartItem 
+                    key={index}
+                    id={product.id}
+                    productName={product.productName}
+                    productQuantity={product.productQuantity}
+                    productUnitPrice={product.productUnitPrice}
+                    productCurrentStock={product.productCurrentStock}
+                    productSize={product.productSize}
+                    productVolume={product.productVolume}
+                />
+            ))}
         </section>
     )
 }
