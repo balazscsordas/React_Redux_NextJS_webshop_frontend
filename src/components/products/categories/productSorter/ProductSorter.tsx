@@ -1,6 +1,9 @@
+import { useAppSelector } from "@/app_redux/hooks";
 import { useState } from "react";
 
 const ProductSorter = () => {
+
+    const categoryProductList = useAppSelector(state => state.categoryDetails.categoryProductList);
 
     const [sorterValue, setSorterValue] = useState("Best selling");
 
@@ -42,7 +45,7 @@ const ProductSorter = () => {
 
     return (
         <section className="flex flex-row justify-between my-6 text-base">
-            <span>4 products</span>
+            <span>{categoryProductList.length} products</span>
             <select name="productSorter" onChange={handleChange} defaultValue={sorterValue}>
                 {options.map((option, index) => (
                     <option value={option.value} key={index}>{option.name}</option>

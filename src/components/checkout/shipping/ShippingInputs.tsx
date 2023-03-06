@@ -1,7 +1,7 @@
 import { BasicPrimaryButton } from "@/components/smallComponents/Buttons";
 import { OneLineNonReqInput, OneLineReqInput } from "@/components/smallComponents/InputFields";
 import TwoColInputBlock from "@/components/smallComponents/TwoColInputBlock";
-import { ShippingDetailsInterface } from "@/interfaces/ShippingDetailsInterface";
+import { ShippingDetailsInterface } from "@/interfaces/checkout/ShippingDetailsInterface";
 import { useState } from "react";
 import BackToPreviousStage from "../BackToPreviousStage";
 import { useAppDispatch, useAppSelector } from "@/app_redux/hooks";

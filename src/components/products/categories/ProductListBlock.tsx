@@ -1,57 +1,22 @@
 import ProductItem from "../ProductItem";
-import ProductImage from "../../../../public/dogimageforbanner.webp";
-import { StaticImageData } from "next/image";
-
-interface Props {
-    name: string,
-    price: number,
-    productImage: StaticImageData,
-}
+import { useState } from "react";
+import { useAppSelector } from "@/app_redux/hooks";
 
 const ProductListBlock = () => {
 
-    const productList: Props[] = [
-        {
-            name: "Na Dog",
-            price: 20,
-            productImage: ProductImage
-        },
-        {
-            name: "Dog",
-            price: 44,
-            productImage: ProductImage
-        },
-        {
-            name: "Na",
-            price: 56,
-            productImage: ProductImage
-        },
-        {
-            name: "Na asd Dog",
-            price: 74,
-            productImage: ProductImage
-        },
-        {
-            name: "Kutya Dog",
-            price: 22,
-            productImage: ProductImage
-        },
-        {
-            name: "NaMivan",
-            price: 11,
-            productImage: ProductImage
-        }
-    ]
+    const categoryProductList = useAppSelector(state => state.categoryDetails.categoryProductList);
+
+    const [reorderedProductList, setReorderedProductList] = useState(categoryProductList);
 
     return (
         <section className="grid grid-cols-3 gap-5">
-            {productList.map((product, index) => (
+            {reorderedProductList.map((product, index) => (
                 <ProductItem 
                     key={index} 
+                    id={product.id}
                     name={product.name} 
-                    price={product.price} 
-                    productImage={product.productImage}/>
-
+                    unitPrice={product.unitPrice} 
+                    imageURL={product.imageURL}/>
             ))}
         </section>
     )

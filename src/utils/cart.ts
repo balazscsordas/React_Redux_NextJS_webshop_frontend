@@ -1,9 +1,9 @@
-import { ProductInCartInterface } from "@/interfaces/ProductInCartInterface";
+import { ProductInCartInterface } from "@/interfaces/ProductInterfaces";
 
 export const getNumberOfItemsInCart = (cartProducts: ProductInCartInterface[]) => {
     let numberOfElements = 0;
     cartProducts.map(product => (
-        numberOfElements += product.productQuantity
+        numberOfElements += product.quantity
     ))
     return numberOfElements;
 }
@@ -11,7 +11,7 @@ export const getNumberOfItemsInCart = (cartProducts: ProductInCartInterface[]) =
 export const getTotalCartValue = (cartProducts: ProductInCartInterface[]) => {
     let totalCartValue = 0;
     cartProducts.map(product => (
-        totalCartValue += product.productQuantity * product.productUnitPrice
+        totalCartValue += product.quantity * product.unitPrice
     ))
     return totalCartValue;
 }

@@ -11,12 +11,13 @@ const CartProducts = () => {
                 <CartItem 
                     key={index}
                     id={product.id}
-                    productName={product.productName}
-                    productUnitPrice={product.productUnitPrice}
-                    productCurrentStock={product.productCurrentStock}
-                    productQuantity={product.productQuantity}
-                    productSize={product.productSize}
-                    productVolume={product.productVolume}
+                    name={product.name}
+                    imageURL={product.imageURL}
+                    unitPrice={product.unitPrice}
+                    currentStock={product.currentStock}
+                    quantity={product.quantity}
+                    size={product.size}
+                    volume={product.volume}
                 />
             ))}
         </section>

@@ -2,9 +2,29 @@ import MainBannerBlock from '@/components/homepage/banner/MainBannerBlock'
 import ProductCategories from '@/components/homepage/categories/ProductCategories'
 import NewProducts from '@/components/homepage/newProducts/NewProducts'
 import Layout from '@/components/layout/Layout'
+import { CategoryListInterface } from '@/interfaces/CategoryInterface'
+import axios from 'axios'
+import { InferGetServerSidePropsType } from 'next'
 import Head from 'next/head'
 
-export default function Home() {
+export const getServerSideProps = async () => {
+  const options = {
+      headers: {
+          withCredentials: true,
+      }
+  }
+  const url = process.env.NEXT_PUBLIC_BASE_URL_SERVER + "/api/category/getall";
+  const response = await axios.get(url, options);
+  const categoryList: CategoryListInterface[] = response.data.data;
+
+  return {
+      props: {
+        categoryList,
+      }
+  }
+}
+
+export default function Home({ categoryList }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   return (
     <>
       <Head>
@@ -16,7 +36,7 @@ export default function Home() {
       <Layout>
         <MainBannerBlock />
         <NewProducts />
-        <ProductCategories />
+        <ProductCategories categoryList={categoryList}/>
       </Layout>
     </>
   )

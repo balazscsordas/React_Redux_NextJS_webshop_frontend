@@ -11,12 +11,13 @@ const ProductList = () => {
                 <CheckoutCartItem 
                     key={index}
                     id={product.id}
-                    productName={product.productName}
-                    productQuantity={product.productQuantity}
-                    productUnitPrice={product.productUnitPrice}
-                    productCurrentStock={product.productCurrentStock}
-                    productSize={product.productSize}
-                    productVolume={product.productVolume}
+                    name={product.name}
+                    imageURL={product.imageURL}
+                    quantity={product.quantity}
+                    unitPrice={product.unitPrice}
+                    currentStock={product.currentStock}
+                    size={product.size}
+                    volume={product.volume}
                 />
             ))}
         </section>

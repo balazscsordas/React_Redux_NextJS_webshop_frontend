@@ -1,6 +1,6 @@
 import { useAppDispatch } from "@/app_redux/hooks";
 import { setChoosenPayment } from "@/features/paymentDetailsSlice";
-import { PaymentOptionInterface } from "@/interfaces/PaymentInterface";
+import { PaymentOptionInterface } from "@/interfaces/checkout/PaymentInterface";
 import Image from "next/image";
 import { useState } from "react";
 

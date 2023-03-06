@@ -10,7 +10,7 @@ const OrderSummaryBlock = () => {
     const getTotalCartValue = () => {
         let totalCartValue = 0;
         cartProducts.value.map(product => (
-            totalCartValue += product.productQuantity * product.productUnitPrice
+            totalCartValue += product.quantity * product.unitPrice
         ))
         return totalCartValue;
     }

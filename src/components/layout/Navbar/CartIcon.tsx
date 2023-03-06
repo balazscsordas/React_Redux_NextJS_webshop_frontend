@@ -6,11 +6,11 @@ import { getNumberOfItemsInCart } from "@/utils/cart";
 
 const CartIcon = () => {
 
-    const cartProducts = useAppSelector(state => state.cartProducts);
+    const cartProducts = useAppSelector(state => state.cartProducts.value);
 
     return (
         <Link href="/cart" passHref>
-            <Badge badgeContent={ getNumberOfItemsInCart(cartProducts.value) } color="primary">
+            <Badge badgeContent={ getNumberOfItemsInCart(cartProducts) } color="primary">
                 <ShoppingCartIcon color="action" />
             </Badge>
         </Link>

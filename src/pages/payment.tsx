@@ -3,7 +3,7 @@ import CheckoutLayout from "@/components/layout/CheckoutLayout";
 import Head from "next/head";
 import CreditCardImage from "../../public/creditcard.png";
 import CashOnDeliveryImage from "../../public/cashondelivery.png";
-import { PaymentOptionInterface } from "@/interfaces/PaymentInterface";
+import { PaymentOptionInterface } from "@/interfaces/checkout/PaymentInterface";
 
 const paymentOptions: PaymentOptionInterface[] = [
     {

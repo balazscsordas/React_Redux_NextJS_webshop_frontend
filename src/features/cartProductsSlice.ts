@@ -1,4 +1,4 @@
-import { ProductInCartInterface } from "@/interfaces/ProductInCartInterface";
+import { ProductInCartInterface } from "@/interfaces/ProductInterfaces";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface CartProductsStateInterface {
@@ -22,7 +22,7 @@ export const cartProductsSlice = createSlice({
             if (state.value.length > 0) {
                 state.value.map(product => {
                     if (product.id === action.payload.id) {
-                        product.productQuantity = product.productQuantity + action.payload.productQuantity
+                        product.quantity = product.quantity + action.payload.quantity
                     } else {
                         state.value.push(action.payload);
                     }

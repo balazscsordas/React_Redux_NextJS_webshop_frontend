@@ -1,13 +1,13 @@
-import Image, { StaticImageData } from "next/image";
+import { useAppSelector } from "@/app_redux/hooks";
+import Image from "next/image";
 
-interface Props {
-    src: StaticImageData,
-}
+const ProductImage = () => {
 
-const ProductImage = ({ src }: Props) => {
+    const productData = useAppSelector(state => state.productDetails);
+
     return (
         <section className="basis-1/2 p-4">
-            <Image alt="product" src={src}/>
+            <Image className="sticky top-24" alt="product" src={productData.productData?.imageURL} width={800} height={800}/>
         </section>
     )
 }

@@ -1,8 +1,8 @@
-import { ShippingDetailsInterface } from '@/interfaces/ShippingDetailsInterface'
+import { ShippingDetailsInterface } from '@/interfaces/checkout/ShippingDetailsInterface'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 interface ShippingDetailsStateInterface {
-  value: ShippingDetailsInterface
+  value: ShippingDetailsInterface,
 }
 
 const initialState: ShippingDetailsStateInterface = {
@@ -16,7 +16,7 @@ const initialState: ShippingDetailsStateInterface = {
     city: "",
     postalCode: "",
     aptSuiteUnit: "",
-  }
+  },
 }
 
 export const shippingDetailsSlice = createSlice({

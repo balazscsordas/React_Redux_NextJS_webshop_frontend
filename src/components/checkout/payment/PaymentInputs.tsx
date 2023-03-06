@@ -1,7 +1,7 @@
 import { BasicPrimaryButton } from "@/components/smallComponents/Buttons";
 import BackToPreviousStage from "../BackToPreviousStage";
 import PaymentOption from "./PaymentOption";
-import { PaymentOptionInterface } from "@/interfaces/PaymentInterface";
+import { PaymentOptionInterface } from "@/interfaces/checkout/PaymentInterface";
 import Box from "@mui/material/Box";
 import { ChangeEvent, useState } from "react";
 import Router from "next/router";

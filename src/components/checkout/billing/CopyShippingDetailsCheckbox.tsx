@@ -1,5 +1,5 @@
 import { useAppSelector } from "@/app_redux/hooks";
-import { BillingDetailsInterface } from "@/interfaces/BillingDetailsInterface";
+import { BillingDetailsInterface } from "@/interfaces/checkout/BillingDetailsInterface";
 import { Dispatch, SetStateAction } from "react";
 
 interface Props {

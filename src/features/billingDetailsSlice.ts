@@ -1,4 +1,4 @@
-import { BillingDetailsInterface } from "@/interfaces/BillingDetailsInterface";
+import { BillingDetailsInterface } from "@/interfaces/checkout/BillingDetailsInterface";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface BillingDetailsStateInterface {

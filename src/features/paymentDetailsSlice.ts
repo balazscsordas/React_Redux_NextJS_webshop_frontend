@@ -1,4 +1,4 @@
-import { PaymentOptionInterface } from "@/interfaces/PaymentInterface";
+import { PaymentOptionInterface } from "@/interfaces/checkout/PaymentInterface";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface PaymentOptionStateInterface {

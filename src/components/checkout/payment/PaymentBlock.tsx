@@ -1,4 +1,4 @@
-import { PaymentOptionInterface } from "@/interfaces/PaymentInterface";
+import { PaymentOptionInterface } from "@/interfaces/checkout/PaymentInterface";
 import CheckoutProgressbar from "../checkoutProgressbar/CheckoutProgressbar";
 import OrderSummaryBlock from "../orderSummary/OrderSummaryBlock";
 import PaymentInputs from "./PaymentInputs";

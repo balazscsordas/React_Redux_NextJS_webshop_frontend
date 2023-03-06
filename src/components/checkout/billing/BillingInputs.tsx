@@ -3,7 +3,7 @@ import { BasicPrimaryButton } from "@/components/smallComponents/Buttons";
 import { OneLineNonReqInput, OneLineReqInput } from "@/components/smallComponents/InputFields";
 import TwoColInputBlock from "@/components/smallComponents/TwoColInputBlock";
 import { setBillingDetails } from "@/features/billingDetailsSlice";
-import { BillingDetailsInterface } from "@/interfaces/BillingDetailsInterface";
+import { BillingDetailsInterface } from "@/interfaces/checkout/BillingDetailsInterface";
 import Box from "@mui/material/Box";
 import Router from "next/router";
 import { useState } from "react";
