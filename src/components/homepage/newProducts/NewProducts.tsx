@@ -1,18 +1,25 @@
 import ProductItem from "@/components/products/ProductItem";
-import productImage from "../../../../public/dogimageforbanner.webp";
-import ProductBlockTitle from "./ProductBlockTitle";
+import { ProductListInterface } from "@/interfaces/ProductInterfaces";
 
-const NewProducts = () => {
+interface Props {
+    newProducts: ProductListInterface[];
+}
+
+const NewProducts = ({ newProducts }: Props) => {
+
     return (
         <section className="max-w-7xl mx-auto px-4 mt-8">
-            <ProductBlockTitle />
+            <h2 className="font-semibold mb-10 text-center">New Products</h2>
             <section className="grid grid-cols-1 min-[400px]:grid-cols-2 md:grid-cols-3 gap-6">
-                <ProductItem id={1} name="Conditioning Shampoo" unitPrice={20} imageURL={productImage}/>
-                <ProductItem id={3} name="Conditioning Shampoo" unitPrice={20} imageURL={productImage}/>
-                <ProductItem id={4} name="Conditioning Shampoo" unitPrice={20} imageURL={productImage}/>
-                <ProductItem id={5} name="Conditioning Shampoo" unitPrice={20} imageURL={productImage}/>
-                <ProductItem id={6} name="Conditioning Shampoo" unitPrice={20} imageURL={productImage}/>
-                <ProductItem id={7} name="Conditioning Shampoo" unitPrice={20} imageURL={productImage}/>
+                { newProducts.map((product, index) => (
+                    <ProductItem 
+                        key={index}
+                        id={product.id} 
+                        name={product.name} 
+                        unitPrice={product.unitPrice} 
+                        imageURL={product.imageURL}
+                    />
+                ))}
             </section>
         </section>
     )

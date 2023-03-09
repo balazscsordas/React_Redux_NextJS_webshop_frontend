@@ -16,7 +16,7 @@ export interface ProductListInterface {
     id: number,
     name: string,
     unitPrice: number,
-    imageURL: StaticImageData,
+    imageURL: string,
 }
 
 // Product details page
