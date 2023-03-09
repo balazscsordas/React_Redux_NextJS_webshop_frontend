@@ -14,21 +14,25 @@ export const getServerSideProps = async (context: GetServerSidePropsContext) => 
         }
     }
     const id = context.params?.id;
-    const url = `${process.env.NEXT_PUBLIC_BASE_URL_SERVER}/api/product/getProductsByCategoryId?categoryId=${id}`;
+    const url = `${process.env.NEXT_PUBLIC_BASE_URL_SERVER}/api/Product/GetProductsByCategoryId?categoryId=${id}`;
     const response = await axios.get(url, options);
     const productList: ProductListInterface[] = response.data.data;
+
+    const url2 = `${process.env.NEXT_PUBLIC_BASE_URL_SERVER}/api/Category/GetProductOptions?categoryId=${id}`;
+    const response2 = await axios.get(url2, options);
+    const sizeOptions = response2.data.data.sizeOptions;
+    const volumeOptions = response2.data.data.volumeOptions;
 
     return {
         props: {
             productList,
+            sizeOptions,
+            volumeOptions,
         }
     }
 }
 
-const sizeOptions = ['S', 'M', 'XL', 'XXL'];
-const volumeOptions = ['100 ml', '200 ml'];
-
-const ProductDetailsPage = ({ productList }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+const ProductDetailsPage = ({ productList, sizeOptions, volumeOptions }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
 
     const dispatch = useAppDispatch();
     dispatch(setCategoryProductList(productList));

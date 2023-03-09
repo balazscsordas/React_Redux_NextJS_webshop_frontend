@@ -22,4 +22,4 @@ const ProductFilterBlock = () => {
     )
 }
 
-export default ProductFilterBlock;  
+export default ProductFilterBlock;

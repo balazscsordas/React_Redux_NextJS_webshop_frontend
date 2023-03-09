@@ -7,7 +7,7 @@ const VolumeFilter = () => {
     const categoryVolumeOptions = useAppSelector(state => state.categoryDetails.categoryVolumeOptions);
 
     return (
-        <FilterItemWrapper name="Size">
+        <FilterItemWrapper name="Volume">
             {categoryVolumeOptions.map((option, index) => (
                 <SizeFilterItem key={index} name={option}/>
             ))}

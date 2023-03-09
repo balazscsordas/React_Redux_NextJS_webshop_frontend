@@ -12,9 +12,9 @@ const FilterItemWrapper = ({ name, children }: Props) => {
     const [showFilter, setShowFilter] = useState(false);
 
     return (
-        <section className="p-2 md:p-4 flex-1">
+        <section className="p-2 md:p-3 flex-1">
             <div className="my-1 md:mb-3 flex flex-row items-center cursor-pointer" onClick={() => setShowFilter(currentStage => !currentStage)}>
-                <h4 className="font-semibold">{ name }</h4>
+                <h5 className="font-semibold">{ name }</h5>
                 <KeyboardArrowUpIcon className={`ml-2 transition-all ${!showFilter && 'rotate-180'}`}/>
             </div>
             <Collapse in={showFilter}>

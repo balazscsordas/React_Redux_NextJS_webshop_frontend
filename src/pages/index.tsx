@@ -22,8 +22,6 @@ export const getServerSideProps = async () => {
   const response2 = await axios.get(url2, options);
   const newProducts: ProductListInterface[] = response2.data.data;
 
-  console.log(newProducts);
-
   return {
       props: {
         categoryList,

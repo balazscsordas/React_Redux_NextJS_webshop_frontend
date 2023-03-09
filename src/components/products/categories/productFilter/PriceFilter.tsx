@@ -40,7 +40,7 @@ const PriceFilter = () => {
     return (
         <FilterItemWrapper name="Price">
             <Slider
-                className="max-w-[70%] text-black mx-auto flex "
+                className="max-w-[70%] text-black md:mx-auto md:flex "
                 getAriaLabel={() => 'Minimum distance'}
                 value={value}
                 marks={marks}

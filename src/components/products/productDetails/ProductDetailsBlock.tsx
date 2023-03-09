@@ -4,7 +4,7 @@ import ProductImage from "./ProductImage";
 const ProductDetailsBlock = () => {
     return (
         <section className="max-w-7xl m-auto mt-8">
-            <div className="flex flex-col sm:flex-row p-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 p-4">
                 <ProductImage />
                 <ProductData />
             </div>

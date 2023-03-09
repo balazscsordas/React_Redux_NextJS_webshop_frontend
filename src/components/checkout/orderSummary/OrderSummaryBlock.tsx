@@ -16,7 +16,7 @@ const OrderSummaryBlock = () => {
     }
 
     return (
-        <section className="bg-secondary rounded-xl shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] basis-1/4 p-4 md:m-4 mb-auto">
+        <section className="bg-secondary rounded-xl shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] basis-1/4 p-4 md:mx-4 mb-auto">
             <h5 className="text-center mb-4 font-semibold">Order Summary</h5>
             <ProductList />
             <div className="border-t-2 border-gray-300">
