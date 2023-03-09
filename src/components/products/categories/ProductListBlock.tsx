@@ -1,16 +1,13 @@
 import ProductItem from "../ProductItem";
-import { useState } from "react";
 import { useAppSelector } from "@/app_redux/hooks";
 
 const ProductListBlock = () => {
 
     const categoryProductList = useAppSelector(state => state.categoryDetails.categoryProductList);
 
-    const [reorderedProductList, setReorderedProductList] = useState(categoryProductList);
-
     return (
-        <section className="grid grid-cols-3 gap-5">
-            {reorderedProductList.map((product, index) => (
+        <section className="grid grid-cols-1 min-[400px]:grid-cols-2 md:grid-cols-3 gap-6">
+            {categoryProductList.map((product, index) => (
                 <ProductItem 
                     key={index} 
                     id={product.id}

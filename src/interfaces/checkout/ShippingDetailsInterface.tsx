@@ -2,10 +2,10 @@ export interface ShippingDetailsInterface {
     firstName: string,
     lastName: string,
     email: string,
-    mobile: string,
+    mobileNumber: string,
     streetAddress: string,
     country: string,
     city: string,
-    postalCode: string,
+    postalCode: number,
     aptSuiteUnit?: string,
 }

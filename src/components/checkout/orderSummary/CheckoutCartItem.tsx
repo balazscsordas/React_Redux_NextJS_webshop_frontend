@@ -8,9 +8,9 @@ const CheckoutCartItem = ({ id, name, unitPrice, imageURL, quantity, currentStoc
             <Image alt="product" src={imageURL} width={50} height={50} className="mb-auto"/>
             <div className="flex flex-col ml-8">
                 <p className="font-medium text-base">{ name }</p>
-                <p className="mt-auto text-base">Size: {size}</p>
-                <p className="mt-auto text-base">Size: {volume}</p>
-                <p className="mt-auto text-base">Quantity: {quantity}</p>
+                { size && <p className="mt-auto text-sm">Size: {size}</p> }
+                { volume && <p className="mt-auto text-sm">Volume: {volume}</p> }
+                <p className="mt-auto text-sm">Quantity: {quantity}</p>
             </div>
             <p className="ml-auto pl-6 font-medium">{ unitPrice * quantity }$</p>
         </section>

@@ -13,8 +13,8 @@ export const getServerSideProps = async (context: GetServerSidePropsContext) => 
             withCredentials: true,
         }
     }
-    const id = context.params?.id;
-    const url = process.env.NEXT_PUBLIC_BASE_URL_SERVER + "/api/product/" + id;
+    const productName = context.params?.productName;
+    const url = `${process.env.NEXT_PUBLIC_BASE_URL_SERVER}/api/product/getProductDataByName?productName=${productName}`;
     const response = await axios.get(url, options);
     const productData: ProductDataInterface = response.data.data.productData;
     const sizeOptions = response.data.data.sizeOptions;

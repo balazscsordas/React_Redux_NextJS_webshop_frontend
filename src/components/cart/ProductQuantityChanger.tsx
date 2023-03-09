@@ -31,11 +31,11 @@ const ProductQuantityChanger = ({ currentStock, currentQuantity, productId }: Pr
     }, [quantity])
 
     return (
-        <section className="flex w-32 flex-row items-center justify-between border rounded-full mt-auto">
+        <section className="flex w-28 md:w-32 flex-row items-center justify-between border rounded-full mt-auto">
             <IconButton onClick={decreaseQuantity}>
                 <ChevronLeftIcon fontSize="small"/>
             </IconButton>
-            <span className="text-lg mx-2">{ quantity }</span>
+            <span className="md:text-lg mx-2">{ quantity }</span>
             <IconButton onClick={increaseQuantity}>
                 <ChevronRightIcon fontSize="small"/>
             </IconButton>

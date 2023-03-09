@@ -3,11 +3,11 @@ import CartItem from "./CartItem";
 
 const CartProducts = () => {
 
-    const cartProducts = useAppSelector(state => state.cartProducts);
+    const cartProducts = useAppSelector(state => state.cartProducts.value);
 
     return (
         <section className="flex-1 m-4">
-            {cartProducts.value.map((product, index) => (
+            {cartProducts.map((product, index) => (
                 <CartItem 
                     key={index}
                     id={product.id}

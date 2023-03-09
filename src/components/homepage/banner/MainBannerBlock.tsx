@@ -3,7 +3,7 @@ import BannerText from "./BannerText";
 
 const MainBannerBlock = () => {
     return (
-        <section className="bg-secondary h-screen flex items-center">
+        <section className="bg-secondary h-screen flex items-center px-4">
             <div className="max-w-7xl m-auto flex flex-col md:flex-row flex-wrap items-center w-full">
                 <BannerText/>
                 <BannerImage/>

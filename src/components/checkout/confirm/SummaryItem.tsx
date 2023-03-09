@@ -1,6 +1,6 @@
 interface Props {
     name: string,
-    value: string,
+    value: string | number,
 }
 
 const SummaryItem = ({ name, value }: Props) => {

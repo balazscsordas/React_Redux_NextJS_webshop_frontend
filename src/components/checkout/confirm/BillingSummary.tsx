@@ -10,7 +10,7 @@ const BillingSummary = () => {
         <SummaryLayout title="Billing details" href="/billing">
             <SummaryItem name="Name" value={`${billingDetails.firstName} ${billingDetails.lastName}`}/>
             <SummaryItem name="Country" value={billingDetails.country}/>
-            <SummaryItem name="Postal code" value={billingDetails.postalCode}/>
+            <SummaryItem name="Postal code" value={billingDetails.postalCode === 0 ? "" : billingDetails.postalCode}/>
             <SummaryItem name="City" value={billingDetails.city}/>
             <SummaryItem name="Address" value={billingDetails.streetAddress}/>
         </SummaryLayout>

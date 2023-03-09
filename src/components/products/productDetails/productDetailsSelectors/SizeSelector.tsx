@@ -7,7 +7,7 @@ const SizeSelector = () => {
     const productData = useAppSelector(state => state.productDetails.productData);
 
     return (
-        <section className="flex flex-row flex-wrap my-12">
+        <section className="flex flex-row flex-wrap my-6 sm:my-12">
             {sizeOptions.map((option, index) => (
                 <SelectorItem 
                     key={index}

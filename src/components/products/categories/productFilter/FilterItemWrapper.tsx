@@ -9,11 +9,11 @@ interface Props {
 
 const FilterItemWrapper = ({ name, children }: Props) => {
 
-    const [showFilter, setShowFilter] = useState(true);
+    const [showFilter, setShowFilter] = useState(false);
 
     return (
-        <section className="p-4">
-            <div className="mb-4 flex flex-row items-center cursor-pointer" onClick={() => setShowFilter(currentStage => !currentStage)}>
+        <section className="p-2 md:p-4 flex-1">
+            <div className="my-1 md:mb-3 flex flex-row items-center cursor-pointer" onClick={() => setShowFilter(currentStage => !currentStage)}>
                 <h4 className="font-semibold">{ name }</h4>
                 <KeyboardArrowUpIcon className={`ml-2 transition-all ${!showFilter && 'rotate-180'}`}/>
             </div>

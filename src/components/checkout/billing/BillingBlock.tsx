@@ -6,7 +6,7 @@ const BillingBlock = () => {
     return (
         <section>
             <CheckoutProgressbar status1='completed' status2="active"/>
-            <section className="flex flex-col lg:flex-row">
+            <section className="flex flex-col lg:flex-row px-4">
                 <BillingInputs />
                 <OrderSummaryBlock />
             </section>

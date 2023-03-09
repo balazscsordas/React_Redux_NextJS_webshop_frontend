@@ -22,15 +22,15 @@ const CopyShippingDetailsCheckbox = ({ copyShippingDetails, setCopyShippingDetai
                 city: "",
                 country: "",
                 email: "",
-                mobile: "",
-                postalCode: "",
+                mobileNumber: "",
+                postalCode: 0,
                 streetAddress: "",
                 aptSuiteUnit: "",
             })
     }
 
     return (
-        <div className="flex flex-row items-center ">
+        <div className="flex flex-row items-center my-4">
             <input 
                 type="checkbox" 
                 checked={copyShippingDetails} 

@@ -1,24 +1,27 @@
 import PaymentBlock from "@/components/checkout/payment/PaymentBlock";
 import CheckoutLayout from "@/components/layout/CheckoutLayout";
 import Head from "next/head";
-import CreditCardImage from "../../public/creditcard.png";
-import CashOnDeliveryImage from "../../public/cashondelivery.png";
-import { PaymentOptionInterface } from "@/interfaces/checkout/PaymentInterface";
+import axios from "axios";
+import { GetServerSidePropsContext, InferGetServerSidePropsType } from "next";
 
-const paymentOptions: PaymentOptionInterface[] = [
-    {
-        id: 2,
-        name: "Credit Card",
-        image: CreditCardImage
-    },
-    {
-        id: 3,
-        name: "Cash On Delivery",
-        image: CashOnDeliveryImage
-    },
-]
+export const getServerSideProps = async (context: GetServerSidePropsContext) => {
+    const options = {
+        headers: {
+            withCredentials: true,
+        }
+    }
+    const url = `${process.env.NEXT_PUBLIC_BASE_URL_SERVER}/api/order/getPaymentOptions`;
+    const response = await axios.get(url, options);
+    const paymentOptions = response.data.data;
+    
+    return {
+        props: {
+            paymentOptions,
+        }
+    }
+}
 
-const ShippingPage = () => {
+const ShippingPage = ({ paymentOptions }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
 
     return (
         <>

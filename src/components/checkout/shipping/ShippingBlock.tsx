@@ -6,7 +6,7 @@ const ShippingBlock = () => {
     return (
         <section>
             <CheckoutProgressbar status1='active'/>
-            <section className="flex flex-col lg:flex-row">
+            <section className="flex flex-col lg:flex-row px-4">
                 <ShippingInputs />
                 <OrderSummaryBlock />
             </section>

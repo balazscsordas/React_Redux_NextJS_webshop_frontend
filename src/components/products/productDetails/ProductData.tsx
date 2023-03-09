@@ -3,7 +3,7 @@ import { Alert } from "@/components/smallComponents/Alerts";
 import { AddToCartButton } from "@/components/smallComponents/Buttons";
 import { addToCart } from "@/features/cartProductsSlice";
 import { ProductInCartInterface } from "@/interfaces/ProductInterfaces";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SizeSelector from "./productDetailsSelectors/SizeSelector";
 import VolumeSelector from "./productDetailsSelectors/VolumeSelector";
 import ProductQuantityChanger from "./ProductQuantityChanger";
@@ -27,15 +27,21 @@ const ProductData = () => {
                 name: productData.name,
                 imageURL: productData.imageURL,
                 unitPrice: productData.unitPrice,
-                quantity,
+                quantity: quantity,
                 currentStock: productData.currentStock,
                 size: (productData.size ? productData.size : ""),
                 volume: (productData.volume ? productData.volume : ""),
             };
             dispatch(addToCart(product));
             setShowSuccessAlert(true);
+            setQuantity(1);
         }
     }
+
+    // Sets the quantity to 1 everytime there is a new product.
+    useEffect(() => {
+        setQuantity(1);
+    }, [productData])
 
     return (
         <>
@@ -46,18 +52,20 @@ const ProductData = () => {
                 severity="success"
             />
             {productData &&
-                <section className="basis-1/2 p-4">
-                    <h2 className="font-medium my-6">{productData.name}</h2>
+                <section className="basis-1/2">
+                    <h2 className="font-medium my-4 sm:my-6">{productData.name}</h2>
                     <h4 className="font-medium">Price</h4>
                     <h3 className="mt-3 text-gray-500">${productData.unitPrice}</h3>
-                    <StockChecker currentStock={productData.currentStock}/>
+                    <StockChecker />
                     { sizeOptions.length > 0 && <SizeSelector /> }
                     { volumeOptions.length > 0 && <VolumeSelector /> }
-                    <div className="my-12 flex flex-row">
-                        <ProductQuantityChanger quantity={quantity} setQuantity={setQuantity} currentStock={productData.currentStock}/>
-                        <AddToCartButton onClick={addToCartOnClick} text="Add to cart"/>
-                    </div>
-                    <p>{productData.description}</p>
+                    { productData.currentStock > 0 && 
+                        <div className="my-6 sm:my-12 flex flex-row">
+                            <ProductQuantityChanger quantity={quantity} setQuantity={setQuantity} currentStock={productData.currentStock}/>
+                            <AddToCartButton onClick={addToCartOnClick} text="Add to cart"/>
+                        </div> 
+                    }
+                    <p className="my-6 sm:my-8">{productData.description}</p>
                     <ShippingInformation />
                 </section>
             }

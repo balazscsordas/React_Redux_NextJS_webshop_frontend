@@ -10,7 +10,7 @@ const ShippingSummary = () => {
         <SummaryLayout title="Shipping details" href="/shipping">
             <SummaryItem name="Name" value={`${shippingDetails.firstName} ${shippingDetails.lastName}`}/>
             <SummaryItem name="Country" value={shippingDetails.country}/>
-            <SummaryItem name="Postal code" value={shippingDetails.postalCode}/>
+            <SummaryItem name="Postal code" value={shippingDetails.postalCode === 0 ? "" : shippingDetails.postalCode}/>
             <SummaryItem name="City" value={shippingDetails.city}/>
             <SummaryItem name="Address" value={shippingDetails.streetAddress}/>
         </SummaryLayout>

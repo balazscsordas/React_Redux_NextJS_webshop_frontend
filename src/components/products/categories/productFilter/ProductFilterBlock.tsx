@@ -10,8 +10,8 @@ const ProductFilterBlock = () => {
     const categoryVolumeOptions = useAppSelector(state => state.categoryDetails.categoryVolumeOptions);
 
     return (
-        <section className="basis-1/4">
-            <section className="flex flex-col sticky top-20">
+        <section className="basis-1 md:basis-1/4">
+            <section className="flex flex-col sm:flex-row md:flex-col md:sticky md:top-20 flex-1 justify-between">
                 <AvailabilityFilter />
                 <PriceFilter />
                 { categorySizeOptions.length > 0 && <SizeFilter /> }

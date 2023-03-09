@@ -19,15 +19,15 @@ export const cartProductsSlice = createSlice({
     initialState,
     reducers: {
         addToCart: (state, action: PayloadAction<ProductInCartInterface>) => {
-            if (state.value.length > 0) {
+            const actionIsInCart = state.value.some(p => p.id === action.payload.id)
+            if (actionIsInCart) {
                 state.value.map(product => {
                     if (product.id === action.payload.id) {
                         product.quantity = product.quantity + action.payload.quantity
-                    } else {
-                        state.value.push(action.payload);
                     }
                 })
-            } else {
+            } 
+            else {
                 state.value.push(action.payload);
             }
         },
@@ -38,7 +38,7 @@ export const cartProductsSlice = createSlice({
             if (action.payload.newQuantity > 0) {
                 const updatedCart = state.value.map(product => {
                     if (product.id === action.payload.productId) {
-                        return {...product, productQuantity: action.payload.newQuantity}
+                        return {...product, quantity: action.payload.newQuantity}
                     }
                     return product;
                 })

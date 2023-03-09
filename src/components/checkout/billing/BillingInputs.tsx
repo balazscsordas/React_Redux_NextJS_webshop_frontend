@@ -21,12 +21,21 @@ const BillingInputs = () => {
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
-        setInputData(prevValues => {
-            return {
-                ...prevValues,
-                [name]: value,
-            }
-        })
+        if (name === 'postalCode') {
+            setInputData(prevValues => {
+                return {
+                    ...prevValues,
+                    postalCode: parseInt(value),
+                }
+            }) 
+        } else {
+            setInputData(prevValues => {
+                return {
+                    ...prevValues,
+                    [name]: value,
+                }
+            })
+        }
     }
 
     const handleSubmit = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -36,7 +45,7 @@ const BillingInputs = () => {
     }
 
     return (
-        <section className="flex-1 m-4">
+        <section className="flex-1">
             <BackToPreviousStage text="back to shipping details" href="/shipping"/>
             <section className="mb-4">
                 <h2 className="py-4 font-semibold border-b-2">Billing Details</h2>
@@ -48,7 +57,7 @@ const BillingInputs = () => {
                     />
                     <TwoColInputBlock 
                         firstInput={ <OneLineReqInput onChange={handleChange} label="Email Address" value={inputData.email} nameVal="email" autoComplete="email"/> }
-                        secondInput={ <OneLineReqInput onChange={handleChange} label="Mobile Number" value={inputData.mobile} nameVal="mobile" autoComplete="tel"/> }
+                        secondInput={ <OneLineReqInput onChange={handleChange} label="Mobile Number" value={inputData.mobileNumber} nameVal="mobileNumber" autoComplete="tel"/> }
                     />
                     <OneLineReqInput onChange={handleChange} label="Street Address" value={inputData.streetAddress} nameVal="streetAddress" autoComplete="street-address"/>
                     <TwoColInputBlock 
@@ -56,10 +65,12 @@ const BillingInputs = () => {
                         secondInput={ <OneLineReqInput onChange={handleChange} label="City" value={inputData.city} nameVal="city" autoComplete="address-level2"/> }
                     />
                     <TwoColInputBlock 
-                        firstInput={ <OneLineReqInput onChange={handleChange} label="Postal code" value={inputData.postalCode} nameVal="postalCode" autoComplete="postal-code"/> }
+                        firstInput={ <OneLineReqInput onChange={handleChange} label="Postal code" value={inputData.postalCode === 0 ? "" : inputData.postalCode} nameVal="postalCode" autoComplete="postal-code"/> }
                         secondInput={ <OneLineNonReqInput onChange={handleChange} label="Apt / Suite / Unit (optional)" value={inputData.aptSuiteUnit} nameVal="aptSuiteUnit"/> }
                     />
-                    <BasicPrimaryButton type="submit" text="Continue"/>
+                    <div className="my-4">
+                        <BasicPrimaryButton type="submit" text="Continue"/>
+                    </div>
                 </Box>
             </section>
         </section>

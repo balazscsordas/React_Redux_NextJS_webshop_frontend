@@ -9,7 +9,7 @@ interface Props {
 
 const CheckoutProgressbar = ({ status1, status2, status3, status4 }: Props) => {
     return (
-        <section className="flex flex-row max-w-md mx-auto">
+        <section className="flex flex-row max-w-2xl mx-auto mb-8">
             <ProgressbarItem status={status1} text="Shipping"/>
             <ProgressbarItem status={status2} text="Billing"/>
             <ProgressbarItem status={status3} text="Payment"/>

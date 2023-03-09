@@ -13,9 +13,9 @@ const ProgressbarItem = ({ status, text }: Props) => {
                 { status === 'active' && <RadioButtonCheckedIcon className='text-yellow-400'/> }
                 { status === 'completed' && <CheckCircleIcon className='text-green-600'/> }
                 { !status && <RadioButtonCheckedIcon className='text-gray-400'/> }
-                { status === 'active' && <span className='font-medium text-lg'>{ text }</span> }
-                { status === 'completed' && <span className='font-medium text-lg'>{ text }</span> }
-                { !status && <span className='font-medium text-lg text-gray-400'>{ text }</span> }
+                { status === 'active' && <span className='font-medium text-sm sm:text-lg'>{ text }</span> }
+                { status === 'completed' && <span className='font-medium text-sm sm:text-lg'>{ text }</span> }
+                { !status && <span className='font-medium text-sm sm:text-lg text-gray-400'>{ text }</span> }
         </section>
     )
 }

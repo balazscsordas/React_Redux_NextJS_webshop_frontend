@@ -9,7 +9,7 @@ interface Props {
 
 const PaymentBlock = ({ paymentOptions }: Props) => {
     return (
-        <section>
+        <section className="px-4">
             <CheckoutProgressbar status1='completed' status2="completed" status3="active"/>
             <section className="flex flex-col lg:flex-row">
                 <PaymentInputs paymentOptions={paymentOptions}/>

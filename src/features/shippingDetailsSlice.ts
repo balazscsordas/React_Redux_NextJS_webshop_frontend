@@ -10,11 +10,11 @@ const initialState: ShippingDetailsStateInterface = {
     firstName: "",
     lastName: "",
     email: "",
-    mobile: "",
+    mobileNumber: "",
     streetAddress: "",
     country: "",
     city: "",
-    postalCode: "",
+    postalCode: 0,
     aptSuiteUnit: "",
   },
 }
@@ -31,11 +31,11 @@ export const shippingDetailsSlice = createSlice({
         firstName: "",
         lastName: "",
         email: "",
-        mobile: "",
+        mobileNumber: "",
         streetAddress: "",
         country: "",
         city: "",
-        postalCode: "",
+        postalCode: 0,
         aptSuiteUnit: "",
       }
     }

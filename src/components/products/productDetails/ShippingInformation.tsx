@@ -3,7 +3,7 @@ import LanguageIcon from '@mui/icons-material/Language';
 
 const ShippingInformation = () => {
     return (
-        <section className='my-12 font-medium'>
+        <section className='my-8 sm:my-12 font-medium'>
             <div className='my-3 flex flex-row items-center'>
                 <span className='flex items-center'><LanguageIcon/></span>
                 <span className='ml-4'>Worldwide shipping</span>

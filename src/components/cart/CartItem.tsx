@@ -29,7 +29,7 @@ const CartItem = ({ id, name, currentStock, imageURL, quantity, size, volume }: 
                     currentStock={currentStock}
                 />
             </div>
-            <IconButton className="absolute top-2 right-2" onClick={removeProductFromCart}>
+            <IconButton className="absolute top-2 right-0 md:right-2" onClick={removeProductFromCart}>
                 <ClearIcon />
             </IconButton>
         </section>

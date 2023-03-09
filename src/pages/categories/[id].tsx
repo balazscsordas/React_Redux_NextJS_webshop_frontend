@@ -14,7 +14,7 @@ export const getServerSideProps = async (context: GetServerSidePropsContext) => 
         }
     }
     const id = context.params?.id;
-    const url = process.env.NEXT_PUBLIC_BASE_URL_SERVER + "/api/product/getProductsByCategoryId/" + id;
+    const url = `${process.env.NEXT_PUBLIC_BASE_URL_SERVER}/api/product/getProductsByCategoryId?categoryId=${id}`;
     const response = await axios.get(url, options);
     const productList: ProductListInterface[] = response.data.data;
 

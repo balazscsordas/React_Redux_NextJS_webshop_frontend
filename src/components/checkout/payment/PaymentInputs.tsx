@@ -25,7 +25,7 @@ const PaymentInputs = ({ paymentOptions }: Props) => {
     }
 
     return (
-        <section className="flex-1 m-4">
+        <section className="flex-1">
             <BackToPreviousStage text="back to billing details" href="/billing"/>
             <section className="mb-4">
                 <h2 className="py-4 font-semibold border-b-2">Payment Details</h2>
@@ -37,7 +37,7 @@ const PaymentInputs = ({ paymentOptions }: Props) => {
                                     key={index}
                                     id={payment.id}
                                     name={payment.name}
-                                    image={payment.image}
+                                    imageURL={payment.imageURL}
                                 />
                             ))
                         }

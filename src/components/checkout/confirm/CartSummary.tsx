@@ -4,21 +4,36 @@ import { getTotalCartValue } from "@/utils/cart";
 import Box from "@mui/material/Box";
 import Collapse from "@mui/material/Collapse";
 import Router from "next/router";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import CheckoutCartItem from "../orderSummary/CheckoutCartItem";
+import { sendOrderDetails } from "./API/sendOrderDetails";
 import SummaryLayout from "./SummaryLayout";
 
 const CartSummary = () => {
 
-    const cartProducts = useAppSelector(state => state.cartProducts);
+    const cartProducts = useAppSelector(state => state.cartProducts.value);
+    const shippingDetails = useAppSelector(state => state.shippingDetails.value);
+    const billingDetails = useAppSelector(state => state.billingDetails.value);
+    const paymentDetails = useAppSelector(state => state.paymentDetails.value);
 
     const [checked, setChecked] = useState(false);
     const [showUncheckedError, setShowUncheckedError] = useState(false);
     const deliveryFee = 0;
 
-    const handleSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e: React.ChangeEvent<HTMLFormElement>) => {
         e.preventDefault();
-        if (checked) Router.push("/success");
+        if (checked && paymentDetails) {
+            const orderDetails = {
+                shippingDetails,
+                billingDetails,
+                paymentDetails,
+                cartProducts
+            }
+            const responseSuccess = await sendOrderDetails(orderDetails);
+            if (responseSuccess == true) {
+                Router.push("/success");
+            }
+        }
         else setShowUncheckedError(true)
     }
 
@@ -28,22 +43,23 @@ const CartSummary = () => {
  
     return (
         <SummaryLayout title="Products" href="/cart">
-            {cartProducts.value.map((product, index) => (
+            {cartProducts.map((product, index) => (
                 <CheckoutCartItem 
                     key={index}
                     id={product.id}
-                    productName={product.productName}
-                    productQuantity={product.productQuantity}
-                    productUnitPrice={product.productUnitPrice}
-                    productCurrentStock={product.productCurrentStock}
-                    productSize={product.productSize}
-                    productVolume={product.productVolume}
+                    name={product.name}
+                    imageURL={product.imageURL}
+                    quantity={product.quantity}
+                    unitPrice={product.unitPrice}
+                    currentStock={product.currentStock}
+                    size={product.size}
+                    volume={product.volume}
                 />
             ))}
             <Box component="form" onSubmit={handleSubmit} className="border-t-2 border-gray-300">
                 <div className="flex flex-row items-center justify-between my-4">
                     <p className="font-medium">Subtotal</p>
-                    <span className="font-medium">{`${getTotalCartValue(cartProducts.value)}$`}</span>
+                    <span className="font-medium">{`${getTotalCartValue(cartProducts)}$`}</span>
                 </div>
                 <div className="flex flex-row items-center justify-between my-4 text-gray-500">
                     <p className="font-medium">Delivery fee</p>
@@ -51,13 +67,13 @@ const CartSummary = () => {
                 </div>
                 <div className="flex flex-row items-center justify-between my-4">
                     <p className="font-medium">Total to pay</p>
-                    <span className="font-medium">{`${getTotalCartValue(cartProducts.value)}$`}</span>
+                    <span className="font-medium">{`${getTotalCartValue(cartProducts)}$`}</span>
                 </div>
                 <div className="flex flex-row items-center justify-between">
                     <p className="font-medium">I have read and accept the terms and conditions.</p>
                     <input type="checkbox" onChange={ handleChange } checked={ checked } className="w-4 h-4"/>
                 </div>
-                <Collapse in={showUncheckedError} className="text-center text-red-600">
+                <Collapse in={showUncheckedError} className="text-center text-red-600 my-4">
                     <p>You have to accept the terms and conditions.</p>
                 </Collapse>
                 <div className="mt-6 text-center">
