@@ -19,3 +19,13 @@ export const getMaxPrice = (categoryProductList: ProductListInterface[]) => {
     });
     return maxPrice;
 }
+
+export const getStep = (categoryProductList: ProductListInterface[]) => {
+    const maxPrice = getMaxPrice(categoryProductList);
+    const minPrice = getMinPrice(categoryProductList);
+    const deficit = maxPrice - minPrice;
+
+    if (maxPrice === minPrice) return 0;
+    if (deficit > 0 && deficit <= 10) return 1
+    return deficit / 10;
+}

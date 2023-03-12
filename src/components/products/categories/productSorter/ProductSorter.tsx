@@ -3,8 +3,6 @@ import { setCategoryProductList } from "@/features/categoryDetailsSlice";
 import { useState } from "react";
 import { sortProductsByValue } from "./utils";
 
-
-
 interface OptionsInterface {
     name: "Best selling" | "Alphabetically, A-Z" | "Alphabetically, Z-A" | "Price, high to low" | "Price, low to high";
     value: "bestSelling" | "a-z" | "z-a" | "priceLowToHigh" | "priceHighToLow";

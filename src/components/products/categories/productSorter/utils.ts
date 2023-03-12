@@ -5,7 +5,7 @@ export const sortProductsByValue = (productList: ProductListInterface[], sortVal
 
     switch (sortValue) {
         case "bestSelling":
-            return productListArray;
+            return sortByIdLowToHigh(productListArray);
         case "a-z":
             return sortByAZ(productListArray);
         case "z-a":
@@ -18,6 +18,11 @@ export const sortProductsByValue = (productList: ProductListInterface[], sortVal
         default:
             return productListArray;
     }
+}
+
+const sortByIdLowToHigh = (productListArray: ProductListInterface[]) => {
+    const sortedProductList = productListArray.sort((a, b) => a.id - b.id);
+    return sortedProductList;
 }
 
 const sortByPriceLowToHigh = (productListArray: ProductListInterface[]) => {

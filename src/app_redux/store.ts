@@ -5,6 +5,7 @@ import cartProductReducer from "../features/cartProductsSlice";
 import paymentDetailsReducer from "../features/paymentDetailsSlice";
 import productDetailsReducer from "../features/productDetailsSlice";
 import categoryDetailsReducer from "../features/categoryDetailsSlice";
+import categoryPageFiltersReducer from "../features/categoryPageFiltersSlice";
 
 export const store = configureStore({
     reducer: {
@@ -14,6 +15,7 @@ export const store = configureStore({
       paymentDetails: paymentDetailsReducer,
       productDetails: productDetailsReducer,
       categoryDetails: categoryDetailsReducer,
+      categoryPageFilters: categoryPageFiltersReducer,
     }
   });
 

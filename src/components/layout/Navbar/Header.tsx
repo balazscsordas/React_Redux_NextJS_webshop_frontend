@@ -21,7 +21,7 @@ const Header = () => {
                     <span className="flex items-center font-semibold text-lg sm:text-xl p-4 sm:p-6">DogHouse</span>
                 </Link>
                 <nav className="hidden sm:flex flex-row">
-                    <NavbarItem href="/" text="Products"/>
+                    <NavbarItem href="categories" text="Products"/>
                     <NavbarItem href="/" text="About Us"/>
                     <NavbarItem href="/" text="Blog"/>
                     <NavbarItem href="/" text="Contact"/>

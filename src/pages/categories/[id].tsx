@@ -8,18 +8,31 @@ import { GetServerSidePropsContext, InferGetServerSidePropsType } from "next";
 import Head from "next/head";
 
 export const getServerSideProps = async (context: GetServerSidePropsContext) => {
+    const id = context.params?.id;
+    const onStock = context.query.onStock;
+    const minPrice = context.query.minPrice;
+    const maxPrice = context.query.maxPrice;
+    const sizes = context.query.sizes;
+    const volumes = context.query.volumes;
+    
     const options = {
+        params: { id, onStock, minPrice, maxPrice, sizes, volumes },
         headers: {
             withCredentials: true,
         }
     }
-    const id = context.params?.id;
-    const url = `${process.env.NEXT_PUBLIC_BASE_URL_SERVER}/api/Product/GetProductsByCategoryId?categoryId=${id}`;
+    const url = `${process.env.NEXT_PUBLIC_BASE_URL_SERVER}/api/Product/GetProductsByCategoryId`;
     const response = await axios.get(url, options);
     const productList: ProductListInterface[] = response.data.data;
 
-    const url2 = `${process.env.NEXT_PUBLIC_BASE_URL_SERVER}/api/Category/GetProductOptions?categoryId=${id}`;
-    const response2 = await axios.get(url2, options);
+    const options2 = {
+        params: { id },
+        headers: {
+            withCredentials: true,
+        }
+    }
+    const url2 = `${process.env.NEXT_PUBLIC_BASE_URL_SERVER}/api/Category/GetProductOptions`;
+    const response2 = await axios.get(url2, options2);
     const sizeOptions = response2.data.data.sizeOptions;
     const volumeOptions = response2.data.data.volumeOptions;
 

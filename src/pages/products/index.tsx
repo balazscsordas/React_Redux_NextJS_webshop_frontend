@@ -8,13 +8,15 @@ import { GetServerSidePropsContext, InferGetServerSidePropsType } from "next";
 import axios from "axios";
 
 export const getServerSideProps = async (context: GetServerSidePropsContext) => {
+    const productName = context.query.productName;
+    const id = context.query.id;
     const options = {
+        params: { productName, id },
         headers: {
             withCredentials: true,
         }
     }
-    const productName = context.params?.productName;
-    const url = `${process.env.NEXT_PUBLIC_BASE_URL_SERVER}/api/product/getProductDataByName?productName=${productName}`;
+    const url = `${process.env.NEXT_PUBLIC_BASE_URL_SERVER}/api/Product/GetProductDataByName`;
     const response = await axios.get(url, options);
     const productData: ProductDataInterface = response.data.data.productData;
     const sizeOptions = response.data.data.sizeOptions;

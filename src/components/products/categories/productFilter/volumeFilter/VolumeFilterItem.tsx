@@ -1,23 +1,23 @@
 import { useAppDispatch, useAppSelector } from "@/app_redux/hooks";
-import { AddSize, RemoveSize } from "@/features/categoryPageFiltersSlice";
-import { ChangeEventHandler, useState } from "react";
+import { AddVolume, RemoveVolume } from "@/features/categoryPageFiltersSlice";
+import { useState } from "react";
 
 interface Props {
     name: string,
 }
 
-const SizeFilterItem = ({ name }: Props) => {
+const VolumeFilterItem = ({ name }: Props) => {
 
     const dispatch = useAppDispatch();
-    const sizes = useAppSelector(state => state.categoryPageFilters.sizes);
+    const volumes = useAppSelector(state => state.categoryPageFilters.volumes);
     const [checked, setChecked] = useState(false);
 
     const handleChange = () => {
-        if (!checked && !sizes.includes(name)) {
-            dispatch(AddSize(name));
+        if (!checked && !volumes.includes(name)) {
+            dispatch(AddVolume(name));
         } 
-        else if (checked && sizes.includes(name)) {
-            dispatch(RemoveSize(name));
+        else if (checked && volumes.includes(name)) {
+            dispatch(RemoveVolume(name));
         }
         setChecked(currState => !currState);
     }
@@ -36,4 +36,4 @@ const SizeFilterItem = ({ name }: Props) => {
     )
 }
 
-export default SizeFilterItem;
+export default VolumeFilterItem;

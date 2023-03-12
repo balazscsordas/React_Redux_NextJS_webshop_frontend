@@ -15,18 +15,14 @@ const SelectorItem = ({ name, value, checked }: Props) => {
 
     const handleChange = async () => {
         if (productData) {
-            const newProductData = await getNewProductData(productData.name, name, value);
+            const newProductData = await getNewProductData(productData.name, productData.id, name, value);
             dispatch(setProductData(newProductData));
         }
     }
 
-    const getNewProductData = async (productName: string, filterName: string, filterValue: string) => {
-        const options = {
-            headers: {
-            }
-        }
-        const url = `${process.env.NEXT_PUBLIC_BASE_URL_SERVER}/api/product/getProductDataByName?productName=${productName}&${filterName}=${filterValue}`;
-        const response = await axios.get(url, options);
+    const getNewProductData = async (productName: string, id: number, filterName: string, filterValue: string) => {
+        const url = `${process.env.NEXT_PUBLIC_BASE_URL_SERVER}/api/Product/GetProductDataByName?productName=${productName}&${filterName}=${filterValue}`;
+        const response = await axios.get(url);
         return response.data.data.productData;
     }
 

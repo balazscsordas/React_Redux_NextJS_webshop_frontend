@@ -1,16 +1,19 @@
-import { useAppSelector } from "@/app_redux/hooks";
-import { getMaxPrice, getMinPrice } from "@/utils/priceFilter";
+import { useAppDispatch, useAppSelector } from "@/app_redux/hooks";
+import { setMaxPrice, setMinPrice } from "@/features/categoryPageFiltersSlice";
+import { getMaxPrice, getMinPrice, getStep } from "@/utils/priceFilter";
 import Slider from "@mui/material/Slider";
 import { useState } from "react";
 import FilterItemWrapper from "./FilterItemWrapper";
 
 const PriceFilter = () => {
 
+  const dispatch = useAppDispatch();
+
   const categoryProductList = useAppSelector(state => state.categoryDetails.categoryProductList);
   const minPrice = getMinPrice(categoryProductList);
   const maxPrice = getMaxPrice(categoryProductList);
-  const step = maxPrice - minPrice / 10;
-  const minDistance = 20;
+  const step = getStep(categoryProductList);
+  const minDistance = step;
 
   const marks = [
     {
@@ -31,9 +34,13 @@ const PriceFilter = () => {
           return;
         }
         if (activeThumb === 0) {
-          setValue([Math.min(newValue[0], value[1] - minDistance), value[1]]);
+          const newValuePair = [Math.min(newValue[0], value[1] - minDistance), value[1]];
+          setValue(newValuePair);
+          dispatch(setMinPrice(newValuePair[0]))
         } else {
-          setValue([value[0], Math.max(newValue[1], value[0] + minDistance)]);
+          const newValuePair = [value[0], Math.max(newValue[1], value[0] + minDistance)];
+          setValue(newValuePair);
+          dispatch(setMaxPrice(newValuePair[1]));
         }
       };
 
@@ -47,7 +54,7 @@ const PriceFilter = () => {
                 onChange={handleChange}
                 valueLabelDisplay="auto"
                 disableSwap
-                step={10}
+                step={step}
                 min={minPrice}
                 max={maxPrice}
             />
