@@ -41,13 +41,15 @@ const ProductSorter = () => {
     const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         const { value } = e.target;
         setSorterValue(value);
-        const newSortedProductList = sortProductsByValue(categoryProductList, value)
-        dispatch(setCategoryProductList(newSortedProductList));
+        if (categoryProductList != null) {
+            const newSortedProductList = sortProductsByValue(categoryProductList, value)
+            dispatch(setCategoryProductList(newSortedProductList));
+        }
     }
 
     return (
         <section className="flex flex-row justify-between my-6 text-base">
-            <span>{categoryProductList.length} products</span>
+            <span>{categoryProductList == null ? 0 : categoryProductList.length} products</span>
             <select name="productSorter" onChange={handleChange} defaultValue={sorterValue}>
                 {options.map((option, index) => (
                     <option value={option.value} key={index}>{option.name}</option>

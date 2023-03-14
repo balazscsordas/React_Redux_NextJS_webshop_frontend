@@ -1,6 +1,7 @@
 import { useAppDispatch, useAppSelector } from "@/app_redux/hooks";
 import { AddSize, RemoveSize } from "@/features/categoryPageFiltersSlice";
-import { ChangeEventHandler, useState } from "react";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 
 interface Props {
     name: string,
@@ -8,9 +9,11 @@ interface Props {
 
 const SizeFilterItem = ({ name }: Props) => {
 
+    const router = useRouter();
     const dispatch = useAppDispatch();
     const sizes = useAppSelector(state => state.categoryPageFilters.sizes);
     const [checked, setChecked] = useState(false);
+
 
     const handleChange = () => {
         if (!checked && !sizes.includes(name)) {
@@ -21,6 +24,12 @@ const SizeFilterItem = ({ name }: Props) => {
         }
         setChecked(currState => !currState);
     }
+
+    useEffect(() => {
+        if(router.query.sizes?.includes(name)) {
+            setChecked(true);
+        };
+    }, [])
 
     return (
         <section className="flex flex-row items-center my-2">

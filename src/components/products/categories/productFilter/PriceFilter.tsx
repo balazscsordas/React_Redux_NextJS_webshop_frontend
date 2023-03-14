@@ -10,9 +10,10 @@ const PriceFilter = () => {
   const dispatch = useAppDispatch();
 
   const categoryProductList = useAppSelector(state => state.categoryDetails.categoryProductList);
-  const minPrice = getMinPrice(categoryProductList);
-  const maxPrice = getMaxPrice(categoryProductList);
-  const step = getStep(categoryProductList);
+
+  const minPrice = 0;
+  const maxPrice = categoryProductList == null ? 10 : getMaxPrice(categoryProductList);
+  const step = categoryProductList == null ? 1 : getStep(categoryProductList);
   const minDistance = step;
 
   const marks = [

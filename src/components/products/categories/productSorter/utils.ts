@@ -2,7 +2,6 @@ import { ProductListInterface } from "@/interfaces/ProductInterfaces";
 
 export const sortProductsByValue = (productList: ProductListInterface[], sortValue: string) => {
     const productListArray = [...productList];
-
     switch (sortValue) {
         case "bestSelling":
             return sortByIdLowToHigh(productListArray);

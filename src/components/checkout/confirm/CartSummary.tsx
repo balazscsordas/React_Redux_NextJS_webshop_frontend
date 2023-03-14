@@ -29,8 +29,8 @@ const CartSummary = () => {
                 paymentDetails,
                 cartProducts
             }
-            const responseSuccess = await sendOrderDetails(orderDetails);
-            if (responseSuccess == true) {
+            const response = await sendOrderDetails(orderDetails);
+            if (response.success == true) {
                 Router.push("/success");
             }
         }

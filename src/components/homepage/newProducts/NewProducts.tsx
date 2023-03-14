@@ -10,17 +10,22 @@ const NewProducts = ({ newProducts }: Props) => {
     return (
         <section className="max-w-7xl mx-auto px-4 mt-8">
             <h2 className="font-semibold mb-10 text-center">New Products</h2>
-            <section className="grid grid-cols-1 min-[400px]:grid-cols-2 md:grid-cols-3 gap-6">
-                { newProducts.map((product, index) => (
-                    <ProductItem 
-                        key={index}
-                        id={product.id} 
-                        name={product.name} 
-                        unitPrice={product.unitPrice} 
-                        imageURL={product.imageURL}
-                    />
-                ))}
-            </section>
+            { newProducts == null 
+                ? <p className="text-center">There isnt any product.</p>
+                : <section className="grid grid-cols-1 min-[400px]:grid-cols-2 md:grid-cols-3 gap-6">
+                    { newProducts.map((product, index) => (
+                        <ProductItem 
+                            key={index}
+                            id={product.id} 
+                            name={product.name} 
+                            unitPrice={product.unitPrice}
+                            currentStock={product.currentStock}
+                            imageURL={product.imageURL}
+                        />
+                    ))}
+                </section>
+            }
+            
         </section>
     )
 }

@@ -17,6 +17,7 @@ export interface ProductListInterface {
     name: string,
     unitPrice: number,
     imageURL: string,
+    currentStock: number,
 }
 
 // Product details page

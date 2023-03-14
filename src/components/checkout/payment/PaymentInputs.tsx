@@ -7,6 +7,7 @@ import { ChangeEvent, useState } from "react";
 import Router from "next/router";
 import { useAppSelector } from "@/app_redux/hooks";
 import Collapse from "@mui/material/Collapse";
+import { addSyntheticLeadingComment } from "typescript";
 
 interface Props {
     paymentOptions: PaymentOptionInterface[]
@@ -29,24 +30,27 @@ const PaymentInputs = ({ paymentOptions }: Props) => {
             <BackToPreviousStage text="back to billing details" href="/billing"/>
             <section className="mb-4">
                 <h2 className="py-4 font-semibold border-b-2">Payment Details</h2>
-                <Box component="form" onSubmit={handleSubmit}>
-                    <section className="flex flex-row flex-wrap">
-                        {
-                            paymentOptions.map((payment, index) => (
-                                <PaymentOption 
-                                    key={index}
-                                    id={payment.id}
-                                    name={payment.name}
-                                    imageURL={payment.imageURL}
-                                />
-                            ))
-                        }
-                    </section>
-                    <Collapse in={showErrorMessage}>
-                        <p className="text-red-600 mb-4">You have to choose a payment option.</p>
-                    </Collapse>
-                    <BasicPrimaryButton type="submit" text="Continue"/>
-                </Box>
+                { paymentOptions !== null 
+                    ? <Box component="form" onSubmit={handleSubmit}>
+                        <section className="flex flex-row flex-wrap">
+                            {
+                                paymentOptions.map((payment, index) => (
+                                    <PaymentOption 
+                                        key={index}
+                                        id={payment.id}
+                                        name={payment.name}
+                                        imageURL={payment.imageURL}
+                                    />
+                                ))
+                            }
+                        </section>
+                        <Collapse in={showErrorMessage}>
+                            <p className="text-red-600 mb-4">You have to choose a payment option.</p>
+                        </Collapse>
+                        <BasicPrimaryButton type="submit" text="Continue"/>
+                    </Box>
+                    : <p className="text-center mt-4">There isnt any payment option.</p>
+                }
             </section>
         </section>
     )

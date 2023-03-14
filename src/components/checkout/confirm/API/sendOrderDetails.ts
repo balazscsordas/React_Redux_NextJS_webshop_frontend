@@ -13,11 +13,16 @@ interface Props {
 
 export const sendOrderDetails = async (orderDetails: Props) => {
     const url = `${process.env.NEXT_PUBLIC_BASE_URL_SERVER}/api/Order/PostOrderDetails`;
-    const params = {orderDetails: orderDetails};
     try {
-        const response = await axios.post(url, params);
-        console.log(orderDetails);
-        return response.data.success;
+        const response = await fetch(url, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(orderDetails),
+        })
+        const data = await response.json();
+        return data;
     }
     catch (err) {
         console.log(err);

@@ -1,6 +1,7 @@
 import { useAppDispatch, useAppSelector } from "@/app_redux/hooks";
 import { AddVolume, RemoveVolume } from "@/features/categoryPageFiltersSlice";
-import { useState } from "react";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 
 interface Props {
     name: string,
@@ -8,6 +9,7 @@ interface Props {
 
 const VolumeFilterItem = ({ name }: Props) => {
 
+    const router = useRouter();
     const dispatch = useAppDispatch();
     const volumes = useAppSelector(state => state.categoryPageFilters.volumes);
     const [checked, setChecked] = useState(false);
@@ -21,6 +23,12 @@ const VolumeFilterItem = ({ name }: Props) => {
         }
         setChecked(currState => !currState);
     }
+
+    useEffect(() => {
+        if(router.query.volumes?.includes(name)) {
+            setChecked(true);
+        };
+    }, [])
 
     return (
         <section className="flex flex-row items-center my-2">
